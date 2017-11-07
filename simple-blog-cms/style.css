@@ -1,0 +1,205 @@
+body {
+background: black;
+background-image: url("img/tlo.jpg");
+Background-repeat: repeat-x;
+ text-align: center;
+}
+
+#page {
+width: 840px;
+ text-align: left;
+ margin: 0 auto 0 auto; 
+}
+
+#header {
+width: 840px;
+height: 80px;
+}
+
+#navi{
+width: 840px;
+height: 30px;
+background: black;
+padding: 0 0 0 0px;
+}
+
+#content{
+width: 840px;
+}
+
+#left{
+width: 635px;
+float: left;
+margin: 10px 10px 10px 10px;
+background: #dddddd;
+
+}
+
+#right{
+width: 170px;
+margin: 10px 10px 10px 0px;
+min-height: 270px;
+float: left;
+background: #6c6a6a;
+}
+
+#footer{
+width: 840px;
+height: 30px;
+clear: both;
+background: #191818;
+text-align:right;
+padding: 1px 5px 2px 0px;
+}
+
+#header h1, h2 {
+color: white;
+margin: 0 0 0 0;
+font-size: 36px;
+font-family: Tahoma;
+}
+
+#header h2 {
+font-size: 18px;
+color: #ee5555;
+margin-left: 55px;
+font-family: Tahoma;
+font-weight: normal;
+font-style: italic;
+}
+
+#left h2 {
+margin: 10px 10px 0px 10px;
+font-size: 24px;
+color: #d75252;
+font-family: Arial;
+font-weight: normal;
+font-style: italic;
+}
+
+.data {
+font-size: 12px;
+color: #aa7788;
+margin: 0px 10px 10px 25px;
+font-family: Arial;
+font-weight: normal;
+font-style: italic;
+}
+
+.tresc {
+font-size: 13px;
+color: black;
+margin: 0px 30px 10px 30px;
+font-family: Verdana;
+font-weight: normal;
+}
+
+.komentarze_naglowek {
+margin: 25px 10px 0px 35px;
+font-size: 24px;
+color: #d75252;
+font-family: Arial;
+font-weight: normal;
+font-style: italic;
+}
+
+.dodaj_k {
+font-size: 21px;
+color: #a15252;
+font-family: Arial;
+font-weight: normal;
+font-style: italic;
+margin: 0px 0px 10px 0px;
+}
+
+.komentarze {
+font-size: 11px;
+color: black;
+margin: 15px 30px 20px 50px;
+font-family: Verdana;
+font-weight: normal;
+font-style: italic;
+}
+
+.linka {
+text-decoration:none;
+margin: 10px 10px 0px 10px;
+font-size: 24px;
+color: #d75252;
+font-family: Arial;
+font-weight: normal;
+font-style: italic;
+}
+
+#formularz {
+margin-left: 34px;
+color: #a15252;
+}
+
+#formularz input[type="text"], textarea {
+
+  background-color : #bbbbbb; 
+  border: 2px solid #dadada;
+  border-radius: 7px;
+  margin-left: 5px;
+}
+
+.send {
+    border: 1px solid #a15252;
+    background: #bbbbbb;
+    margin-bottom: 25px;
+}
+
+#footer p {
+color: #4d4747;
+font-size: 11px;
+}
+
+#navi a {
+color: #a5a5a5;
+font-family: Verdana;
+font-size: 13px;
+margin: 25px 5px 0px 25px;
+font-weight: bold;
+text-decoration:none;
+}
+#navi a:hover {
+text-decoration:overline;
+color: #beb9b9;
+}
+
+#right p {
+margin: 0px 0px 0px 0px;
+color: white;
+font-family: Tahoma;
+margin: 15px 2px 45px 10px;
+}
+
+#right a {
+margin: 0px 0px 0px 0px;
+color: white;
+margin: 10px 1px 1px 15px;
+font-size: 13px;
+}
+
+fieldset {
+border: none;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+}
+
+.foto {
+    width: 30%;
+}
+
+.oddziel {
+    background-color: #404040;
+    width: 100%;
+    height: 15px;
+}
+
+.kodek {
+    margin: 15px 45px 15px 45px;
+    color: green;
+    word-wrap:break-word;
+}
