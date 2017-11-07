@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Catshare Checker</title>
+    <script type="text/javascript">
+        function checkTextArea() {
+            if (document.getElementById('textarea_url').value === '') {
+                alert('Empty !!');
+                return false;
+            } else {
+                return true;
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+<form action="testlink.php" method="POST" onsubmit="return validate()">
+    Proszę podać odnośniki:<br>
+    <textarea rows="8" cols="90" name="hosting_url" id="textarea_url">
+            </textarea><br>
+    <input onclick="return checkTextArea();" type="submit" value="Generuj link">
+</form>
+</body>
+</html>
