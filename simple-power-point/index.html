@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{ MyPrez</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="neon.css">
+    <script src="funkcjeCanvasJS.js"></script>
+    <script src="funkcjeEdytorJS.js"></script>
+    <script src="jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+<header id="pasek-gorny">
+    <h1>
+        <spain style="color: #ec7224;">{</spain>
+        MyPrez
+    </h1>
+</header>
+<section id="bok">
+    <nav id="nawigacja">
+
+        <p>Wybierz motyw:</p>
+        <select name="motyw" id="motyw" onchange="zmienMotyw()">
+            <option>Nowoczesny 2.0</option>
+            <option>Czarno biały</option>
+            <option>Matrix</option>
+            <option>Słoneczny</option>
+        </select>
+
+        <p>Wybierz przejście:</p>
+        <select name="przejscie" id="przejscie"
+                onchange="przejscie(document.getElementById('przejscie').selectedIndex)">
+            <option>Wyjaśnianie</option>
+            <option>Zjazd z góry</option>
+        </select><br/><br/>Kolor gradient 1:
+        <input type="color" id="kolor1" onChange="rysuj()" value="#004080"><br/>
+        Kolor gradient 2:
+        <input type="color" id="kolor2" onChange="rysuj()" value="#c0c0c0"><br/>
+        Kolor nagłówka:
+        <input type="color" id="kolor3" onChange="rysuj()" value="#ffffff"><br/>
+        Kolor tekstu:
+        <input type="color" id="kolor4" onChange="rysuj()" value="#ffffff"><br/>
+
+    </nav>
+    <aside id="pasek-bok">
+        <select name="drop1" id="Select1" size="4" multiple="multiple" onchange="zaladujSlajd()">
+
+        </select>
+
+
+        <button type="button" onclick="addit()"> Dodaj slajd!</button>
+        <button type="button" onclick="delit()"> Usuń slajd!</button>
+        <p>Ilość slajdów:
+            <spain id="ilosc-slajdow">0</spain>
+        </p>
+        <p>Obecny slajd:
+            <spain id="obecny-slajd">0</spain>
+        </p>
+    </aside>
+</section>
+
+<article id="tresc">
+    <div id="edytor">
+        <h2 id="tytul-slajdu" onclick="edytujNaglowek()">Tytuł slajdu</h2><a id="edytuj-naglowek"
+                                                                             onclick="edytujNaglowek()">edytuj tytuł
+        slajdu<a>
+            <p id="tresc-slajdu" onclick="edytujTresc()">tresc</p>
+            <div id="pokaz" style="display: none"></div>
+    </div>
+    <div id="podglad">Podgląd:<br/>
+        <center>
+            <canvas id="myCanvas" width="380" height="280"></canvas>
+        </center>
+    </div>
+</article>
+
+<footer id="pasek-dol"><input id="opublikuj" type="submit" value="Opublikuj"
+                              onclick="publikujPrezentacje('ty1', 'mail1')"></footer>
+</body>
+</html>
+
