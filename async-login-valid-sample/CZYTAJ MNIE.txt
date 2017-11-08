@@ -1,0 +1,15 @@
+AUTOR: Patrickjusz
+GITHUB: https://github.com/patrickjusz/
+ŒRODOWISKO TESTOWE: XAMPP v5.6.14, Windows 8.1
+------------------------------------------------
+Aplikacja sprawdza dostêpnoœæ loginu ³¹cz¹c siê 
+w tle asynchronicznie ze skryptem validUsername.php.
+Zajêtym loginem testowym jest admin. Ze wzglêdu,
+¿e jest to skrypt przyk³adowy to nie u¿ywa on bazy danych
+do przechowywania nowych loginów.
+
+W celu przetesowania skryptu warto zwróciæ uwagê na 13 liniê
+kodu Ÿród³owego w pliku skryptJS.js wskazuj¹c¹ œcie¿kê do pliku
+validUsername.php. Domyœlna œcie¿ka to /mwo/validUsername.php:
+
+$.post("http://localhost/mwo/validUsername.php", {username: wartosc}).done(function (data) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rejestracja i hasła z loginem</title>
+    <script src="jquery.js"></script>
+    <script src="skryptJS.js"></script>
+    <link rel="stylesheet" href="styleCSS.css"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div id="container">
+    <h1>Rejestracja i weryfikacja hasła z loginem</h1>
+    <form id="login" action="przekierowanie.html">
+        <ul>
+            <li>
+                <label for="username">Login:</label>
+                <span><input id="username" name="username" type="text"/></span>
+            </li>
+
+            <div id="login_info">
+                <center>
+                    <ul>
+                        <li id="loginValid" class="invalid"><b>Skrypt PHP:</b> Wybrany login jest zajęty!</li>
+                        <li id="loginInValid" class="invalid"><b>Skrypt PHP:</b> Wybrany login wolny!</li>
+                    </ul>
+                </center>
+            </div>
+
+            <li>
+                <label for="pswd">Hasło:</label>
+                <span><input id="pswd" type="password" name="pswd"/></span>
+            </li>
+            <li>
+                <button class="invalid" id="send_form" type="submit" disabled>Zarejestruj</button>
+            </li>
+        </ul>
+    </form>
+
+
+    <div id="pswd_info">
+        <h4>Hasło musi mieć:</h4>
+        <ul>
+            <li id="letter" class="invalid">Conajmniej <strong>jeden znak</strong></li>
+            <li id="capital" class="invalid">Chociaż <strong>jedną dużą litere</strong></li>
+            <li id="number" class="invalid">Conajmniej <strong>jednej cyfry</strong></li>
+            <li id="length" class="invalid">Hasło musi posiadać <strong>10 znaków</strong></li>
+        </ul>
+    </div>
+
+    <p class="result"></p>
+</div>
+
+</body>
+</html>
