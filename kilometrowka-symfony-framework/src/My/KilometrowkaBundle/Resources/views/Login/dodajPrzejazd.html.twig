@@ -1,0 +1,180 @@
+{% extends 'MyKilometrowkaBundle:Login:layout.html.twig' %}
+
+
+
+{#<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>#}
+
+{% block body %}
+    {% if edycja==1 %}
+        <form action="{{ path('my_kilometrowka_zalogowany_dodajPrzejazd') }}" method="post" onsubmit="return sprawdzCelPrzejazdu();">
+            <table border="0" onload="myFunction()">
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz pojazd który bierze udział w przejeździe. Nowe pojazdy możesz dodać w zakładce pojazdy."></span>&nbsp;<label class="form-label">Pojazd</label>
+                        <!--form:input path="idPojazdu" class="form-control" /-->
+                        {#selected="selected"#}
+                        <select path="idPojazdu" class="form-control" name="idPojazdu">
+                            {% for rows in pojazdy %}
+                                {% if przejazdy.idPojazdu==rows.id %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}" selected="selected" />{{rows.nazwa}}</option>
+                                {% else %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwa}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz trase którą przejechał pojazd. Nową trase możesz dodać w zakładce trasy."></span>&nbsp;<label class="form-label">Trasa:</label><!--form:input path="idTrasy" class="form-control" /-->
+                        <select path="idTrasy" class="form-control" name="idTrasy">
+                            {% for rows in trasy %}
+                                {% if przejazdy.idTrasy==rows.id %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}" selected="selected"/>{{rows.nazwa}}</option>
+                                {% else %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwa}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz firmę dla której został wykonany bieżący przejazd. Nową firme możesz dodać w zakładce firmy."></span>&nbsp;<label class="form-label">Firma:</label><!--form:input path="idFirmy" class="form-control" /-->
+                        <select path="idFirmy" class="form-control" name="idFirmy">
+                            {% for rows in firmy %}
+                                {% if przejazdy.idFirmy==rows.id %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}" selected="selected"/>{{rows.nazwaFirmy}}</option>
+                                {% else %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwaFirmy}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz pracownika który wykonał przejazd. Nowego pracownika możesz dodać w zakładce pracownicy."></span>&nbsp;<label class="form-label">Pracownik:</label><!--form:input path="idPracownika" class="form-control" /-->
+                        <select path="idPracownika" class="form-control" name="idPracownika">
+                            {% for rows in pracownicy %}
+                                {% if przejazdy.idPracownika==rows.id %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}" selected="selected"/>{{rows.imie}} {{rows.nazwisko}}</option>
+                                {% else %}
+                                    <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.imie}} {{rows.nazwisko}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj krótki cel wykonanego przejazdu (2-32 znaki)."></span>&nbsp;<label class="form-label">Cel wyjazdu:</label><input path="celWyjazdu" class="form-control" min="2" value="{{przejazdy.celWyjazdu}}" name="celWyjazdu"/></td>
+                </tr>
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj datę przejazdu."></span>&nbsp;<label class="form-label">Data:</label><input path="data" class="form-control" type="date" value="{{ przejazdy.data|date('Y-m-d') }}" name="data"/></td>
+                </tr>
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj krótki opcjonalny opis przejazdu."></span>&nbsp;<label class="form-label">Adnotacje*:</label><input path="adnotacje" class="form-control" value="{{przejazdy.adnotacje}}" name="adnotacje"/></td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td colspan="2" align="center"><input path="id" class="form-control" value="{{ przejazdy.id }}" type="hidden" name="edycjaId" /><br><input type="submit" value="Dodaj" class="btn btn-primary btn-sm"/></td>
+                </tr>
+            </table>
+        </form>
+    {% endif %}
+
+
+
+    {% if edycja!=1 %}
+        <form action="{{ path('my_kilometrowka_zalogowany_dodajPrzejazd') }}" method="post" onsubmit="return sprawdzCelPrzejazdu();">
+            <table border="0" onload="myFunction()">
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz pojazd który bierze udział w przejeździe. Nowe pojazdy możesz dodać w zakładce Pojazdy."></span>&nbsp;<label class="form-label">Pojazd</label>
+                        <select path="idPojazdu" class="form-control" name="idPojazdu">
+                            {% for rows in pojazdy %}
+                                <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwa}}</option>
+                            {% endfor %}
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz trase którą przejechał pojazd. Nową trase możesz dodać w zakładce trasy."></span>&nbsp;<label class="form-label">Trasa:</label><!--form:input path="idTrasy" class="form-control" /-->
+                        {#<form:select path="idTrasy" class="form-control">
+                            <form:options items="${listaTras}" />
+                        </form:select>#}
+                        <select path="idTrasy" class="form-control" name="idTrasy">
+                            {% for rows in trasy %}
+                                <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwa}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz firmę dla której został wykonany bieżący przejazd. Nową firme możesz dodać w zakładce firmy."></span>&nbsp;<label class="form-label">Firma:</label><!--form:input path="idFirmy" class="form-control" /-->
+                        {#<form:select path="idFirmy" class="form-control">
+                            <form:options items="${listaFirm}" />
+                        </form:select>#}
+                        <select path="idFirmy" class="form-control" name="idFirmy">
+                            {% for rows in firmy %}
+                                <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.nazwaFirmy}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;"  class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz pracownika który wykonał przejazd. Nowego pracownika możesz dodać w zakładce pracownicy."></span>&nbsp;<label class="form-label">Pracownik:</label><!--form:input path="idPracownika" class="form-control" /-->
+                        <select path="idPracownika" class="form-control" name="idPracownika">
+                            {% for rows in pracownicy %}
+                                <option items="{{rows.id}}" value="{{rows.id}}"/>{{rows.imie}} {{rows.nazwisko}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj krótki cel wykonanego przejazdu (2-32 znaki)."></span>&nbsp;<label class="form-label">Cel wyjazdu:</label><input path="celWyjazdu" class="form-control" name="celWyjazdu"/></td>
+                </tr>
+
+                <tr>
+
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj datę w której miał miejsce przejazd."></span>&nbsp;<label class="form-label">Data:</label><input path="data" class="form-control" type="date" name="data" /></td>
+                </tr>
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj krótki opcjonalny opis przejazdu."></span>&nbsp;<label class="form-label">Adnotacje*:</label><input path="adnotacje" class="form-control" name="adnotacje"/></td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="2" align="center"><br><input type="submit" value="Dodaj" class="btn btn-primary btn-sm"/></td>
+                </tr>
+            </table>
+        </form>
+    {% endif %}
+{% endblock %}
