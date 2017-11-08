@@ -1,5 +1,5 @@
 <?php
-
+//Dodano komentarz
 namespace My\KilometrowkaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
