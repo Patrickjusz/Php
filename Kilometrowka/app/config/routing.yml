@@ -1,0 +1,4 @@
+my_kilometrowka:
+    resource: "@MyKilometrowkaBundle/Resources/config/routing.yml"
+    prefix:   /
+

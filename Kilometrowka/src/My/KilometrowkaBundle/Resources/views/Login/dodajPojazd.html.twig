@@ -1,0 +1,112 @@
+{% extends 'MyKilometrowkaBundle:Login:layout.html.twig' %}
+
+
+
+{#<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>#}
+
+{% block body %}
+    {% if edycja==1 %}
+        <form action="{{ path('my_kilometrowka_zalogowany_dodajPojazd') }}" method="post">
+            <table border="0">
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj prawdziwą nazwę Twojego pojazdu (marka i model)."></span>&nbsp;<label class="form-label">Nazwa:</label><input path="nazwa" class="form-control" placeholder="Nazwa pojazdu" name="nazwa" value="{{ pojazdy.nazwa }}"/><font color="red"><form:errors path="nazwa" /></font></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj numer rejestracyjny pojazdu."></span>&nbsp;<label class="form-label">Numer rejestracyjny:</label><input path="numerRejestracyjny" class="form-control" placeholder="Numer rej. pojazdu" name="numerRejestracyjny" value="{{ pojazdy.numerRejestracyjny }}"/><font color="red"><form:errors path="numerRejestracyjny" /></font></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz z listy pojemność skokową silnika pojazdu."></span>&nbsp;<label class="form-label">Pojemność silnika:</label>
+                        <select path="pojemnoscSilnika" class="form-control" name="pojemnoscSilnika">  
+
+                            {% if pojazdy.pojemnoscSilnika==1 %}
+                                <option value="1" selected="selected" >Samochod os. poj. poniżej 900cm^3</option>  
+                                <option value="2">Samochod os. poj. powyżej 900cm^3</option>  
+                                <option value="3">Motocykl</option>  
+                                <option value="4">Motorower</option>  
+                            {% endif %}
+
+
+                            {% if pojazdy.pojemnoscSilnika==2 %}
+                                <option value="1">Samochod os. poj. poniżej 900cm^3</option>  
+                                <option value="2" selected="selected">Samochod os. poj. powyżej 900cm^3</option>  
+                                <option value="3">Motocykl</option>  
+                                <option value="4">Motorower</option>  
+                            {% endif %}
+
+                            {% if pojazdy.pojemnoscSilnika==3 %}
+                                <option value="1">Samochod os. poj. poniżej 900cm^3</option>  
+                                <option value="2">Samochod os. poj. powyżej 900cm^3</option>  
+                                <option value="3" selected="selected">Motocykl</option>  
+                                <option value="4">Motorower</option>  
+                            {% endif %}
+
+                            {% if pojazdy.pojemnoscSilnika==4 %}
+                                <option value="1">Samochod os. poj. poniżej 900cm^3</option>  
+                                <option value="2">Samochod os. poj. powyżej 900cm^3</option>  
+                                <option value="3">Motocykl</option>  
+                                <option value="4" selected="selected">Motorower</option>  
+                            {% endif %}
+
+
+
+                        </select>  <font color="red"><form:errors path="pojemnoscSilnika" /></font></td>
+
+                <td><!--form:select path="country" items="${countryList}" /--></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj opis pojazdu. Opis jest opcjonalny i nie musisz go podawać."></span>&nbsp;<label class="form-label">Opis*:</label><textarea path="opis" class="form-control" placeholder="Krótki opis pojazdu" name="opis" />{{ pojazdy.opis }}</textarea><font color="red"><form:errors path="opis" /></font></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><input path="id" class="form-control" value="{{pojazdy.id}}" type="hidden" name="edycjaId" /><br><input type="submit" value="Edytuj" class="btn btn-primary btn-sm" class="form-control" /></td>
+                </tr>
+            </table>
+        </form>
+    {% endif %}
+
+
+
+    {% if edycja!=1 %}
+        <form action="{{ path('my_kilometrowka_zalogowany_dodajPojazd') }}" method="post">
+            <table border="0">
+
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj prawdziwą nazwę Twojego pojazdu (marka i model)."></span>&nbsp;<label class="form-label">Nazwa:</label><input path="nazwa" class="form-control" placeholder="Nazwa pojazdu" name="nazwa"/><font color="red"><form:errors path="nazwa" /></font></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj numer rejestracyjny pojazdu."></span>&nbsp;<label class="form-label">Numer rejestracyjny:</label><input path="numerRejestracyjny" class="form-control" placeholder="Numer rej. pojazdu" name="numerRejestracyjny"/><font color="red"><form:errors path="numerRejestracyjny" /></font></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Wybierz z listy pojemność skokową silnika pojazdu."></span>&nbsp;<label class="form-label">Pojemność silnika:</label>
+                        <select path="pojemnoscSilnika" class="form-control" name="pojemnoscSilnika">  
+                            <option value="1">Samochod os. poj. poniżej 900cm^3</option>  
+                            <option value="2"  selected="selected" >Samochod os. poj. powyżej 900cm^3</option>  
+                            <option value="3">Motocykl</option>  
+                            <option value="4">Motorower</option>  
+                        </select>  <font color="red"><form:errors path="pojemnoscSilnika" /></font></td>
+
+                <td><!--form:select path="country" items="${countryList}" /--></td>
+                </tr>
+                <tr>
+
+                    <td><span style="color: silver;" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Podaj opis pojazdu. Opis jest opcjonalny i nie musisz go podawać."></span>&nbsp;<label class="form-label">Opis*:</label><textarea path="opis" class="form-control" placeholder="Krótki opis pojazdu" name="opis"/></textarea><font color="red"><form:errors path="opis" /></font></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><br><input type="submit" value="Dodaj" class="btn btn-primary btn-sm" class="form-control" /></td>
+                </tr>
+            </table>
+        </form>
+    {% endif %}
+{% endblock %}

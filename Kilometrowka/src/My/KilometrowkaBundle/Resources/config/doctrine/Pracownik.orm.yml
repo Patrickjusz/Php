@@ -1,0 +1,31 @@
+My\KilometrowkaBundle\Entity\Pracownik:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        imie:
+            type: string
+            length: '22'
+        nazwisko:
+            type: string
+            length: '32'
+        adres:
+            type: string
+            length: '128'
+        miasto:
+            type: string
+            length: '64'
+        kodPocztowy:
+            type: string
+            length: '6'
+        telefon:
+            type: string
+            length: '20'
+        idUzytkownika:
+            type: integer
+    lifecycleCallbacks: {  }
