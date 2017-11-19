@@ -96,7 +96,7 @@ class YouTubeLive {
 }
 
 //-------------------Examples---------------------------
-$liveStream = new YouTubeLive('UCbabkLoGsq0CAtkbDtiXskA', 'AIzaSyAibDxnr2B323xvr93A9XHXLpeagmqk4Qo');
+$liveStream = new YouTubeLive('YOUR_CHANNEL_ID', 'YOUR_API_KEY');
 
 foreach ($liveStream->getUpcommingEventArray() as $row) {
     echo $row['title'] . '<br/>';
