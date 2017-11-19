@@ -1,6 +1,7 @@
 # YouTubeLive Class
 ## Examples
 ```php
+require_once('YouTubeLive.php');
 $liveStream = new YouTubeLive('YOUR_CHANNEL_ID', 'YOUR_API_KEY');
 
 foreach ($liveStream->getUpcommingEventArray() as $row) {
