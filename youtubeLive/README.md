@@ -1,6 +1,6 @@
 # YouTubeLive Class
 ## Synopsis
-Get upcoming and live YouTube Event info class.
+Get upcoming and live YouTube event info class.
 ## Examples
 ```php
 require_once('YouTubeLive.php');
