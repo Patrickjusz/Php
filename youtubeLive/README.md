@@ -15,3 +15,5 @@ foreach ($liveStream->getUpcommingEventArray() as $row) {
     echo $row['url'] . '<br/><br/>';
 }
 ```
+## License
+MIT License
